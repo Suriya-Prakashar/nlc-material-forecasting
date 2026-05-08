@@ -37,7 +37,6 @@ nlc-material-forecasting/
 │  └─ vite.config.js
 ├─ ml_models/
 ├─ uploads/
-├─ start_public.bat
 └─ README.md
 ```
 
@@ -108,15 +107,17 @@ This creates the compiled output in `frontend/dist`.
 3. Upload supported data files (CSV/Excel/PDF as implemented in backend parser).
 4. View demand forecast and budget output in dashboard components.
 
-## Public Sharing for Demo
+## Deployment
 
-`localhost` links work only on your computer.  
-To share with others, use a tunnel and send the generated public URL.
+For public hosting, deploy the frontend to Vercel and host the backend API on a cloud service.
 
-Example options:
-- `cloudflared tunnel --url http://localhost:5173`
-- `ssh -R 80:localhost:5173 localhost.run`
-- `ssh -p 443 -R0:localhost:5173 a.pinggy.io`
+Current live frontend URL:
+- `https://frontend-two-xi-26.vercel.app`
+
+Typical flow:
+1. Push this repository to GitHub.
+2. Import the repository in Vercel for frontend deployment.
+3. Configure the frontend API base URL to point to your deployed backend endpoint.
 
 ## Troubleshooting
 
