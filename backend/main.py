@@ -24,7 +24,8 @@ app.add_middleware(
 )
 
 # Ensure upload directory exists
-os.makedirs("uploads", exist_ok=True)
+UPLOAD_DIR = "/tmp/uploads" if os.environ.get("VERCEL") else "uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 # Include API routers
 app.include_router(upload_router, prefix="/api")

@@ -8,8 +8,12 @@ router = APIRouter()
 @router.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     try:
+        # Use /tmp on Vercel as it's the only writable directory
+        upload_dir = "/tmp/uploads" if os.environ.get("VERCEL") else "uploads"
+        os.makedirs(upload_dir, exist_ok=True)
+        
         # Save file to uploads directory
-        file_location = f"uploads/{file.filename}"
+        file_location = os.path.join(upload_dir, file.filename)
         with open(file_location, "wb+") as file_object:
             shutil.copyfileobj(file.file, file_object)
             
